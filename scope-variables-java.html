@@ -158,30 +158,238 @@
 
 												<li><span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span><a href="#0">1 April 2019</a></li>
 
-												<li><span class="icon"><i class="fa fa-tags" aria-hidden="true"></i></span><a href="#0">JAVA</a> - <a href="#0">Scope of Variables</a></li>
+												<li><span class="icon"><i class="fa fa-tags" aria-hidden="true"></i></span><a href="#0">JAVA</a> - <a href="#0">Scope of Variables</a> - <a href="#0">Local Variables</a> - <a href="#0">Instance Variables</a> - <a href="#0">Class Variables</a> - <a href="#0">Shadowing Variables</a> - <a href="#0">Hiding Variables</a></li>
 											</ul>
 										</div>
 										<h5>Local Variables</h5>
-										<p class="mb-10">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+				
+										<p class="mb-10">
+												A local variable in Java is a variable that’s declared within the body of a method. Then you can use the variable only within that method. Other methods in the class aren’t even aware that the variable exists.
+										</p>
+										<br/>
+										<p class="spacial">
+												-> Local variables are declared in methods, constructors, or blocks.
+												<br/><br/>
+												-> Local variables are created when the method, constructor or block is entered and the variable will be destroyed once it exits the method, constructor or block.
+												<br/><br/>
+												-> Access modifiers cannot be used for local variables.
+												<br/><br/>
+												-> Local variables are visible only within the declared method, constructor or block.
+												<br/><br/>
+												-> Local variables are implemented at stack level internally.
+												<br/><br/>
+												-> There is no default value for local variables so local variables should be declared and an initial value should be assigned before the first use.
+												<br/><br/>
+												-> Arguments of methods are local variable as well.
+												<br/><br/>
+												-> When you don't write the Braces (Implicit Braces), the scope will be the line.
+										</p>
 
-										<p class="mb-10">Lid est minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-										<p class="spacial">doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-										<p>Lid est laborum dolo rumes fugats untras. Etharums rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+										<p>Example:</p>
 
 										<pre class="brush: java">
-											public class TesteSingleton {
-												static TesteSingleton ts = new TesteSingleton();
-
-												private TesteSingleton() {
-												};
-
-												public static TesteSingleton getInstance() {
-													return ts;
+												public class LocalVariable {
+	
+													// Constructor
+													public LocalVariable() {
+														// Local Variable
+														String firstName = "John";
+														System.out.println(firstName);
+													}
+													
+													// Method
+													public void doSomething(String secondName /* Local Variable */ ) {
+														// Local Variable
+														int age = 33;
+														System.out.println(age);
+														
+														// When you don't write the Braces (Implicit Braces), the scope will be the line
+														for(int i=0, j=0; i<10; i++)j++;
+														
+														// The follow SysOut won't work because the variables "i" and "j" doens't exist out of the For line
+														System.out.println(i);
+														System.out.println(j);
+													}
+												
 												}
+										</pre>
+
+										<br/>
+										<hr>
+										<br/>
+										<h5>Instance Variables</h5>
+										<p class="mb-10">
+											In object oriented programming, objects store their individual states in the "non-static fields" that is declared without the static keyword.
+										</p>
+
+										<br/>
+										<p class="spacial">
+												-> Each object of the class has its own set of values for these non-static variables so we can say that these are related to objects (instances of the class).
+												<br/><br/>
+												-> Hence these variables are also known as instance variables. These variables take default values if not initialized.
+												<br/><br/>
+												-> Can be accessed from anywhere within the object.
+												
+										</p>
+
+										<p>Example:</p>
+
+										<pre class="brush: java">
+												public class InstanceVariable {
+	
+													// Instance Variable
+													String firstName = "John";
+													
+													// A Instance Variable can be accessed from another instance variable
+													String fullName = firstName + " Silva";
+													
+													
+													// Can be accessed from within the Constructor
+													public InstanceVariable (){
+														System.out.println(firstName);
+														System.out.println(fullName);
+													}
+													
+													// Can be accessed from within the Method
+													public void doSomething() {
+														System.out.println(firstName);
+														System.out.println(fullName);
+													}
+													
+													public static void main(String[] args) {
+														InstanceVariable obj = new InstanceVariable();
+														obj.doSomething();
+														
+														// Can be accessed from the Object
+														obj.firstName = "New Name";
+														System.out.println(obj.firstName);
+														
+													}
+												}
+										</pre>
+
+										<br/>
+										<hr>
+										<br/>
+										<h5>Class Variables</h5>
+										<p class="mb-10">
+											Class Variable are collectively related to a class and none of the object can claim them its sole-proprietor.
+										</p>
+
+										<br/>
+										<p class="spacial">
+												-> The variables defined with static keyword are shared by all objects. Here Objects do not store an individual value but they are forced to share it among themselves.
+												<br/><br/>
+												-> These variables are declared as "static fields" using the static keyword.
+												<br/><br/>
+												-> Always the same set of values is shared among different objects of the same class. So these variables are like global variables which are same for all objects of the class.
+												<br/><br/>
+												-> These variables take default values if not initialized.
+												<br/><br/>
+										</p>
+
+										<p>Example:</p>
+
+										<pre class="brush: java">
+												public class ClassVariable {
+	
+													// Static Instance Variable
+													static int id = 100;
+													
+													// Can be accessed from within the Constructor
+													public ClassVariable() {
+														System.out.println(id);
+													}
+													
+													// Can be accessed from within the Static Method
+													static void doSomething() {
+														System.out.println(id);
+													}
+													
+													// Can be accessed from within the Method
+													public void doSomething2() {
+														System.out.println(id);
+													}
+													
+													public static void main(String[] args) {
+														ClassVariable classVariable = new ClassVariable();
+														classVariable.doSomething();
+														classVariable.doSomething2();
+														
+														// Static Method can access a static instance variable
+														ClassVariable.doSomething();
+														
+														// Can access static instance variable from instance object or class
+														System.out.println(classVariable.id);
+														System.out.println(ClassVariable.id);
+														
+													}
+												
+												}
+										</pre>
+
+										<br/>
+										<hr>
+										<br/>
+										<h5>Shadowing Variables</h5>
+										<p class="mb-10">
+											Variable shadowing happens when we define a variable in a closure scope with a variable name that is the same as one for a variable we've already defined in an outer scope.
+										</p>
+
+										<br/>
+										<p class="spacial">
+												-> In other words, when a local variable has the same name as one of the instance variables, the local variable shadows the instance variable inside the method block.
+												<br/><br/>
+											
+										</p>
+
+										<p>Example:</p>
+
+										<pre class="brush: java">
+											public class ShadowingVariable {
+
+												// Declaring instance static variable X
+												static int x = 10;
+												
+												// Shadowing instance static variable with the same name in the argument of the method
+												public static void doSomething(int x) {
+													// To access the instance static variable we use the class name
+													ShadowingVariable.x = x;
+												}
+												
+												// Declaring instance variable Y
+												int y = 20;
+												
+												// Shadowing instance variable with the same name in the argument of the method
+												public void doSomething2(int y) {
+													// To access the instance variable we use the keyword "this"
+													this.y = y;
+												}
+											
 											}
 										</pre>
+
+										<br/>
+										<hr>
+										<br/>
+										<h5>Hiding Variables</h5>
+										<p class="mb-10">
+											XX
+										</p>
+
+										<br/>
+										<p class="spacial">
+												-> XXX
+												<br/><br/>
+											
+										</p>
+
+										<p>Example:</p>
+
+										<pre class="brush: java">
+												
+										</pre>
+
 									</div>
 								</div>
 							</div>
@@ -192,16 +400,11 @@
 		</section>
 		<!--====== End mp-blog ======-->
 
-
 		<!-- ====== Footer ======  -->
 		<footer class="gray">
 				<p class="copy">Copy Right &copy; By Cristopher André | ALL RIGHTS RESERVED</p>
 		</footer>
 		<!-- ====== End Footer ======  -->
-
-
-
-
        
         <!-- jQuery -->
 		<script src="./dist/js/jquery-3.0.0.min.js"></script>
@@ -209,26 +412,6 @@
 
 	  	<!-- bootstrap -->
 		<script src="./dist/js/bootstrap.min.js"></script>
-
-		<!-- scrollIt 
-		<script src="./dist/js/scrollIt.min.js"></script>
-		-->
-
-		<!-- magnific-popup 
-		<script src="./dist/js/jquery.magnific-popup.min.js"></script>
-		-->
-
-		<!-- owl carousel 
-		<script src="./dist/js/owl.carousel.min.js"></script>
-		-->
-
-		<!-- stellar js 
-		<script src="./dist/js/jquery.stellar.min.js"></script>
-		-->
-
-		<!-- typed js 
-		  <script src="./dist/js/typed.js"></script>
-		  -->
 
       	<!-- isotope.pkgd.min js -->
       	<script src="./dist/js/isotope.pkgd.min.js"></script>
