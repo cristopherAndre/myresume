@@ -374,12 +374,12 @@
 										<br/>
 										<h5>Hiding Variables</h5>
 										<p class="mb-10">
-											XX
+											Variable hiding happens when we define a variable in a child class with the same name as one we defined in the parent class. A child class can declare a variable with the same name as an inherited variable from its parent class, thus hiding the inherited variable.
 										</p>
 
 										<br/>
 										<p class="spacial">
-												-> XXX
+												-> In other words, when the child and parent classes both have a variable with the same name, the child class' variable hides the parent class' variable.
 												<br/><br/>
 											
 										</p>
@@ -387,6 +387,26 @@
 										<p>Example:</p>
 
 										<pre class="brush: java">
+											class Person {
+												// Declaring instance Variable X
+												int x = 10;
+											}
+											
+											public class HidingVariable extends Person {
+												
+												// Declaring instance variable X will hide the variable X from its parent class
+												int x = 20; // Child instance variable
+												
+												public void doSomething() {
+													HidingVariable obj = new HidingVariable();
+													// To access the child variable we use the obj.x
+													System.out.println(obj.x);
+													
+													// To access the parent variable we use the keyword "super"
+													System.out.println(super.x);
+												}
+											
+											}
 												
 										</pre>
 
