@@ -151,7 +151,7 @@
 
 									<div class="post-info">
 										<a href="#0">
-											<h5>Scope of Variables In Java</h5>
+											<h5>Structure of a Java Class</h5>
 										</a>
 										<div class="mor-inf">
 											<ul>
@@ -159,294 +159,137 @@
 
 												<li><span class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></span><a href="#0">1 April 2019</a></li>
 
-												<li><span class="icon"><i class="fa fa-tags" aria-hidden="true"></i></span><a href="#0">JAVA</a> - <a href="#0">Scope of Variables</a></li>
+												<li><span class="icon"><i class="fa fa-tags" aria-hidden="true"></i></span><a href="#0">JAVA</a> - <a href="#0">Structure of a Java Class</a></li>
 											</ul>
 										</div>
-										<p class="mb-10">Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+										<p class="mb-10">A class is a user defined blueprint or prototype from which objects are created.  It represents the set of properties or methods that are common to all objects of one type. In general, class declarations can include these components, in order:</p>
+										
+										<br/>
 
-										<p class="mb-10">Lid est minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+										<p class="spacial">
+											-> Modifiers : A class can be public or has default access.
+											<br/><br/>
+											-> Class name: The name should begin with a initial letter (capitalized by convention).
+											<br/><br/>
+											-> Superclass(if any): The name of the class’s parent (superclass), if any, preceded by the keyword extends. A class can only extend (subclass) one parent.
+											<br/><br/>
+											-> Interfaces(if any): A comma-separated list of interfaces implemented by the class, if any, preceded by the keyword implements. A class can implement more than one interface.
+											<br/><br/>
+											-> Body: The class body surrounded by braces, { }.
+										</p>
 
-										<p class="spacial">doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-										<p>Lid est laborum dolo rumes fugats untras. Etharums rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+										<p>Example:</p>
 
 										<pre class="brush: java">
-											public class TesteSingleton {
-												static TesteSingleton ts = new TesteSingleton();
-
-												private TesteSingleton() {
-												};
-
-												public static TesteSingleton getInstance() {
-													return ts;
+											// Line Comments can be anywhere
+											/* Block Comments can be anywhere */
+											
+											// First we have the Package
+											package com.JavaCertification.StructureOfClass;
+											
+											
+											// Imports after Package
+											import java.util.Date;
+											import java.io.*;
+											
+											
+											// In the same file you can have only one public Class/Interface/Enum and the file name have to be the same name than your Class/Interface/Enum
+											
+											
+											// Classes
+											// Class can be Public, Abstract or Final
+											public class StructureClass {
+												
+												// Instance Variables
+												String firstName;
+												Integer age;
+												
+												// Static Variable
+												static int total = 0;
+												
+												// Constructor
+												// Constructor Methods Doesn't have return
+												StructureClass (String firstName){
+													if(firstName == null) {
+														this.firstName = "Default Name";
+														// But you can use the keyword "return" to finish the execution of the method
+														return;
+													}
+													this.firstName = firstName;
 												}
+												
+												// Method 1
+												public void doSomething1() {
+													// Local Variable
+													double pi = 3.14;
+												}
+												
+												// Method 2
+												public void doSomething2() {
+												}
+												
+												// Overload Method
+												public void doSomething2(String y) {
+												}
+												
+												// Override Method
+												@Override
+												public String toString() {
+													return super.toString();
+												}
+												
+												// Static Method
+												public static void main(String[] args) {
+													
+												}
+											
 											}
 										</pre>
 
+										<br/>
+										<hr>
+										<br/>
+										<h5>Structure of a Java Interface</h5>
+										<p class="mb-10">
+											Like a class, an interface can have methods and variables, but the methods declared in interface are by default abstract (only method signature, no body).
+										</p>
 
+										<br/>
+										<p class="spacial">
+												-> The instance variable is Public, Static and Final by default, even if you don't write explicitly.
+												<br/><br/>
+												-> The method is Public and Abstract by default, even if you don't write explicitly.
+										</p>
 
-										<!-- page numbers -->
-										<!--
-										<div class="numb mt-80">
-											<a href="#0"><span><< Prev Post</span></a>
-											<a href="#0" class="pull-right"><span>Next Post >></span></a>
-										</div>
+										<p>Example:</p>
 
-										<div class="share text-center">
-											<div class="social">
-												<a href="#0">
-													<span><i class="fa fa-facebook" aria-hidden="true"></i></span>
-												</a>
-												<a href="#0">
-													<span><i class="fa fa-twitter" aria-hidden="true"></i></span>
-												</a>
-												<a href="#0">
-													<span><i class="fa fa-instagram" aria-hidden="true"></i></span>
-												</a>
-												<a href="#0">
-													<span><i class="fa fa-linkedin" aria-hidden="true"></i></span>
-												</a>
-												<a href="#0">
-													<span><i class="fa fa-vimeo" aria-hidden="true"></i></span>
-												</a>
-												<a href="#0">
-													<span><i class="fa fa-pinterest-p" aria-hidden="true"></i></span>
-												</a>
-											</div>
-										</div>
-										-->
-
+										<pre class="brush: java">
+											public interface StructureOfInterface {
+	
+												// Instance Variables, final variable, you can't change the value
+												// The instance variable is Public, Static and Final by default, even if you don't write explicitly.
+												int SIZE = 1;
+												public static final int WIDTH = 10;
+												
+												// Methods 
+												// The method is Public and Abstract by default, even if you don't write explicitly.
+												void doSomething(int x, int y);
+												public abstract void doSomething2(int x, int y);
+											
+											}
+											
+										</pre>
 
 									</div>
 								</div>
 							</div>
 
-							<!-- comments 
-							<div class="comm mb-80">
-								<div class="side-tit">
-									<h6 class="ctit">Comments (3)</h6>
-								</div>
-								<div class="comm-item">
-									<div class="user-img">
-										<img src="./dist/img/blog/00.png" alt="image">
-									</div>
-									<div class="comnts">
-										<h6 class="ctit">John Doe</h6>
-										<a href="#0"><span>6 August , 2017</span></a>
-										<span><a href="#0"><i class="fa fa-comment-o" aria-hidden="true"></i>Reply</a></span>
-										<p>Lid est laborum dolo rumes fugats untras. Etharums rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-									</div>
-								</div>
-								<div class="comm-item comm-reply">
-									<div class="user-img">
-										<img src="./dist/img/blog/00.png" alt="image">
-									</div>
-									<div class="comnts">
-										<h6 class="ctit">Hisham Dimo</h6>
-										<a href="#0"><span>6 August , 2017</span></a>
-										<span><a href="#0"><i class="fa fa-comment-o" aria-hidden="true"></i>Reply</a></span>
-										<p>Lid est laborum dolo rumes fugats untras. Etharums rerums unsers sadips amets.. Sed ut perspiciatis unde omnis </p>
-									</div>
-								</div>
-								<div class="comm-item">
-									<div class="user-img">
-										<img src="./dist/img/blog/00.png" alt="image">
-									</div>
-									<div class="comnts">
-										<h6 class="ctit">John Doe</h6>
-										<a href="#0"><span>6 August , 2017</span></a>
-										<span><a href="#0"><i class="fa fa-comment-o" aria-hidden="true"></i>Reply</a></span>
-										<p>Lid est laborum dolo rumes fugats untras. Etharums rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-									</div>
-								</div>
-								<div class="comm-item">
-									<div class="user-img">
-										<img src="./dist/img/blog/00.png" alt="image">
-									</div>
-									<div class="comnts">
-										<h6 class="ctit">John Doe</h6>
-										<a href="#0"><span>6 August , 2017</span></a>
-										<span><a href="#0"><i class="fa fa-comment-o" aria-hidden="true"></i>Reply</a></span>
-										<p>Lid est laborum dolo rumes fugats untras. Etharums rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-									</div>
-								</div>
-							</div>
-							-->
-
-							<!-- comments form 
-							<div class="lev-comm">
-								<div class="side-tit">
-									<h6 class="ctit">Leave A Comment</h6>
-								</div>
-
-								<form>
-									<div class="col-md-6">
-										<input type="text" name="name" placeholder="Your Name">
-									</div>
-									<div class="col-md-6">
-										<input type="text" name="email" placeholder="Your Mail">
-									</div>
-									<div class="col-md-12">
-										<input type="text" name="web" placeholder="Website">
-									</div>
-									<div class="col-md-12">
-										<textarea placeholder="Your Comment"></textarea>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<input type="submit" name="submit" value="Post Comment">
-									</div>
-									<div class="clear-fix"></div>
-								</form>
-							</div>
-							-->
+						
 
 						</div>
 					</div>
 
-					<!-- side bar -->
-					<!--
-					<div class="col-md-4">
-						<div class="side-bar">
-							<div class="widget">
-								<div class="search">
-									<form>
-										<input type="text" name="search" placeholder="Search">
-										<span class="icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-									</form>
-								</div>
-							</div>
-
-							<div class="widget">
-								<div class="lpost">
-									<div class="side-tit">
-										<h6 class="ctit">Latest Posts</h6>
-									</div>
-
-									<div class="item">
-										<a href="#">
-											<div class="sm-img">
-												<img src="./dist/img/blog/1.jpg" alt="image">
-											</div>
-											<div class="info">
-												<h5>This Post Is Demo</h5>
-												<span>6 August , 2017</span>
-											</div>
-										</a>
-									</div>
-
-									<div class="item">
-										<a href="#">
-											<div class="sm-img">
-												<img src="./dist/img/blog/2.jpg" alt="image">
-											</div>
-											<div class="info">
-												<h5>This Post Is Demo</h5>
-												<span>6 August , 2017</span>
-											</div>
-										</a>
-									</div>
-									<div class="item">
-										<a href="#">
-											<div class="sm-img">
-												<img src="./dist/img/blog/3.jpg" alt="image">
-											</div>
-											<div class="info">
-												<h5>This Post Is Demo</h5>
-												<span>6 August , 2017</span>
-											</div>
-										</a>
-									</div>
-
-								</div>
-							</div>
-
-							<div class="widget">
-								<div class="catg">
-									<div class="side-tit">
-										<h6 class="ctit">Category</h6>
-									</div>
-
-									<h5><a href="#0">Web Design</a><span>35</span></h5>
-									<h5><a href="#0">Life Style</a><span>78</span></h5>
-									<h5><a href="#0">Martin</a><span>96</span></h5>
-									<h5><a href="#0">Photographic</a><span>19</span></h5>
-									<h5><a href="#0">Creative</a><span>25</span></h5>
-									<h5><a href="#0">Corprate</a><span>16</span></h5>
-								</div>
-							</div>
-
-							<div class="widget">
-								<div class="about-bar">
-									<div class="side-tit">
-										<h6 class="ctit">About Us</h6>
-									</div>
-									<img src="./dist/img/blog/hero.jpg" alt="image">
-									<p>Fusce vitae nulla at lorem pretium semper. Curab itur laoreet, lectus ac dignissim vestibul lorem pretium semper lectus ac dignissim.</p>
-								</div>
-							</div>
-
-							<div class="widget">
-								<div class="follow">
-									<div class="side-tit">
-										<h6 class="ctit">To Follow Us</h6>
-									</div>
-									<div class="social">
-										<a href="#0">
-											<span><i class="fa fa-facebook" aria-hidden="true"></i></span>
-										</a>
-										<a href="#0">
-											<span><i class="fa fa-twitter" aria-hidden="true"></i></span>
-										</a>
-										<a href="#0">
-											<span><i class="fa fa-instagram" aria-hidden="true"></i></span>
-										</a>
-										<a href="#0">
-											<span><i class="fa fa-linkedin" aria-hidden="true"></i></span>
-										</a>
-										<a href="#0">
-											<span><i class="fa fa-vimeo" aria-hidden="true"></i></span>
-										</a>
-										<a href="#0">
-											<span><i class="fa fa-pinterest-p" aria-hidden="true"></i></span>
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="widget">
-								<div class="tags">
-									<div class="side-tit">
-										<h6 class="ctit">Tags</h6>
-									</div>
-
-									<a href="#0">
-										<span>Web</span>
-									</a>
-									<a href="#0">
-										<span>Art</span>
-									</a>
-									<a href="#0">
-										<span>Design</span>
-									</a>
-									<a href="#0">
-										<span>Photo</span>
-									</a>
-									<a href="#0">
-										<span>Life style</span>
-									</a>
-									<a href="#0">
-										<span>Creative</span>
-									</a>
-									<a href="#0">
-										<span>All Tags</span>
-									</a>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-				-->
+					
 				</div>
 			</div>
 		</section>
@@ -469,26 +312,6 @@
 
 	  	<!-- bootstrap -->
 		<script src="./dist/js/bootstrap.min.js"></script>
-
-		<!-- scrollIt 
-		<script src="./dist/js/scrollIt.min.js"></script>
-		-->
-
-		<!-- magnific-popup 
-		<script src="./dist/js/jquery.magnific-popup.min.js"></script>
-		-->
-
-		<!-- owl carousel 
-		<script src="./dist/js/owl.carousel.min.js"></script>
-		-->
-
-		<!-- stellar js 
-		<script src="./dist/js/jquery.stellar.min.js"></script>
-		-->
-
-		<!-- typed js 
-		  <script src="./dist/js/typed.js"></script>
-		  -->
 
       	<!-- isotope.pkgd.min js -->
       	<script src="./dist/js/isotope.pkgd.min.js"></script>
