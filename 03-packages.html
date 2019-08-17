@@ -132,7 +132,7 @@
         <div class="v-middle">
           <!-- Caption -->
           <div class="caption text-center">
-            <h1 class="mb-15">Executable Java Applications</h1>
+            <h1 class="mb-15">Java Packages</h1>
             <!--<h6>Single Post</h6>-->
           </div>
         </div>
@@ -160,7 +160,7 @@
 
                   <div class="post-info">
                     <a href="#0">
-                      <h5>Executable Java Applications</h5>
+                      <h5>Java Packages</h5>
                     </a>
                     <div class="mor-inf">
                       <ul>
@@ -183,83 +183,155 @@
                           <span class="icon"
                             ><i class="fa fa-tags" aria-hidden="true"></i></span
                           ><a href="#0">JAVA</a> -
-                          <a href="#0">Executable Java Applications</a>
+                          <a href="#0">Java Packages</a>
                         </li>
                       </ul>
                     </div>
                     <p class="mb-10">
-                      An executable Java class is a class which, when handed
-                      over to the JVM, starts its execution at a particular
-                      point in the class — the main method, defined in the
-                      class. The JVM starts executing the code that is defined
-                      in the main method. You cannot hand over a nonexecutable
-                      Java class to the JVM and ask it to start executing the
-                      class. In this case, the JVM won’t know how to execute it
-                      because no entry point is marked, for the JVM, in a
-                      nonexecutable class.
+                      A package in Java is used to group related classes. Think
+                      of it as a folder in a file directory. We use packages to
+                      avoid name conflicts, and to write a better maintainable
+                      code
                     </p>
 
                     <br />
 
                     <p class="spacial">
-                      -> The method must be marked as a public method.
+                      -> Two or more imports with the same same name doens't
+                      compile.
                       <br /><br />
-                      -> The method must be marked as a static method.
+                      -> To use two or more objects with the same name we must
+                      use the Fully Qualified Name.
                       <br /><br />
-                      -> The name of the method must be main.
+                      -> Default package classes never can be accessed.
                       <br /><br />
-                      -> The return type of this method must be void.
+                      -> Imports with ".*" wont import sub-packages.
                       <br /><br />
-                      -> The method must accept a method argument of a String
-                      array or a variable argument of type String.
-                      <br /><br />
-                      -> JRE contains the Java Virtual machine
-                      <br /><br />
-                      ->JDK contains the javac compiler and JRE
+                      -> You can use import static to usi static variables or
+                      methods
                     </p>
 
                     <p>Example:</p>
 
                     <pre class="brush: java">
-											public class ExecutableJavaApplication {
+                
+                      import com.JavaCertification.Packages.First.Address;
+                      import com.JavaCertification.Packages.First.Person;
 
-												/*
-												 * An executable Java class is a class which, when handed over to the JVM, 
-												 * starts its execution at a particular point in the class — the main method, 
-												 * defined in the class. The JVM starts executing the code that is defined in the main method. 
-												 * You cannot hand over a nonexecutable Java class to the JVM and ask it to start executing the class. 
-												 * In this case, the JVM won’t know how to execute it because no entry point is marked, 
-												 * for the JVM, in a nonexecutable class.
-												 * 
-												 */
-												
-												// The method must be marked as a public method.
-												// The method must be marked as a static method.
-												// The name of the method must be main.
-												// The return type of this method must be void.
-												// The method must accept a method argument of a String array or a variable argument of type String.
-												// JRE contains the Java Virtual machine
-												// JDK contains the javac compiler and JRE
-												
-												// To run the class by command line, java + class name with package, Ex:
-												// java com.ExecutableJavaApplication
-												// Pass the array to the main method, java + class name with package + arguments separated by space, Ex: 
-												// java com.ExecutableJavaApplication argument1 argument2
-												// Pass the properties to the main method, java + -Dpropertie=value + class name with package, Ex:
-												// java -Denvironment=dev com.ExecutableJavaApplication
-												
-												public static void main(String... args) {
-													System.out.println("Running...");
-													
-													System.out.println(args.length);
-													for(int i = 0; i < args.length; i++) {
-														System.out.println(i + " => " + args[i]);
-													}
-												}
-												
-											}
-										</pre
-                    >
+                      // Instead of declaring each import separate, we can import the entire package.
+                      import com.JavaCertification.Packages.First.*;
+
+                      // Can't import two classes with the same name from different packages
+                      //import java.util.Date;
+                      //import java.sql.Date;
+
+                      // In this case the Java will import the java.sql.Date
+                      import java.util.*;
+                      import java.sql.Date;
+
+                      import com.JavaCertification.Packages.Third.*;
+
+                      // Static Import you can import variable or method to be accessed directly
+                      import static com.JavaCertification.Packages.Third.Util.PI;
+                      import static com.JavaCertification.Packages.Third.Util.bigger;
+                      // Import all statics from package
+                      import static com.JavaCertification.Packages.Third.Util.*;
+
+
+                      /*
+                      * Two or more imports with the same same name doens't compile.
+                      * To use two or more objects with the same name we must use the Fully Qualified Name.
+                      * Default package classes never can be accessed.
+                      * Imports with ".*" wont import sub-packages.
+                      * You can use import static to usi static variables or methods 
+                      * 
+                      */
+
+                      public class World {
+                        
+                        // To reference a class from another package, we use package + className
+                        // The class referenced must be Public to be imported.	
+                        com.JavaCertification.Packages.First.Person person;
+
+                        // It's not a good practice to use the Fully Qualified Name
+                        public com.JavaCertification.Packages.First.Person getPerson() {
+                          return person;
+                        }
+                        
+                        // Use the import so you don't have to type the Fully Qualified Name
+                        Person person2;
+                        public Person getPerson2() {
+                          return person2;
+                        }	
+                        
+                        // Reference of another object
+                        Address address;
+                        
+                        // This code wont work, because you're trying to instance a java.util.Date() in the type java.sql.Date
+                        //Date date = new java.util.Date();
+                        
+                        // If you want to use both Dates you'll need to use the Fully Qualified name in both
+                        java.util.Date dateUtil = new java.util.Date();
+                        java.sql.Date dateSql = new java.sql.Date(1220227200);
+                        
+                        public void doSomething() {
+                          // Using Util import
+                          double pi = Util.PI;
+                          int bigger = Util.bigger(3, 4);
+                          
+                          // Using static import
+                          double pi2 = PI;
+                          int bigger2 = bigger(3, 4);
+                        }
+
+                      }
+                      
+                    </pre>
+                    <pre class="brush: java">
+                      package com.JavaCertification.Packages.First;
+
+                      import com.JavaCertification.Packages.First.Address; // Optional because they are in the same package
+
+                      public class Person {
+                        
+                        String name;
+                        
+                        // Address is in the same package than Person, so the import isn't necessary
+                        Address address;
+
+                      }
+
+                    </pre>
+                    <pre class="brush: java">
+                      package com.JavaCertification.Packages.First;
+
+                      public class Address {
+                        
+                        String street;
+                        String number;
+                        String neighborhood;
+
+                      }
+
+                    </pre>
+                    <pre class="brush: java">
+                      package com.JavaCertification.Packages.Third;
+
+                      public class Util {
+                        
+                        public static double PI = 3.14;
+                        
+                        public static int bigger(int a, int b) {
+                          if(a > b) {
+                            return a;
+                          }else {
+                            return b;
+                          }
+                        }
+
+                      }
+
+                    </pre>
                   </div>
                 </div>
               </div>
