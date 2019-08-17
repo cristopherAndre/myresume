@@ -113,10 +113,7 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#resume">Resume</a></li>
             <li><a href="index.html#knowledge">Knowledge</a></li>
-
-            <!--
-				<li><a href="main.html#blog">Blog</a></li>
-				-->
+            <li><a href="index.html#blog">Blog</a></li>
             <li><a href="index.html#contact">Contact</a></li>
           </ul>
         </div>
@@ -215,11 +212,11 @@
 
                     <pre class="brush: java">
                 
-                      import com.JavaCertification.Packages.First.Address;
-                      import com.JavaCertification.Packages.First.Person;
+                      import com.javaCertification.packages.first.Address;
+                      import com.javaCertification.packages.first.Person;
 
                       // Instead of declaring each import separate, we can import the entire package.
-                      import com.JavaCertification.Packages.First.*;
+                      import com.javaCertification.packages.first.*;
 
                       // Can't import two classes with the same name from different packages
                       //import java.util.Date;
@@ -229,13 +226,13 @@
                       import java.util.*;
                       import java.sql.Date;
 
-                      import com.JavaCertification.Packages.Third.*;
+                      import com.javaCertification.packages.third.*;
 
                       // Static Import you can import variable or method to be accessed directly
-                      import static com.JavaCertification.Packages.Third.Util.PI;
-                      import static com.JavaCertification.Packages.Third.Util.bigger;
+                      import static com.javaCertification.packages.third.Util.PI;
+                      import static com.javaCertification.packages.third.Util.bigger;
                       // Import all statics from package
-                      import static com.JavaCertification.Packages.Third.Util.*;
+                      import static com.javaCertification.packages.third.Util.*;
 
 
                       /*
@@ -251,10 +248,10 @@
                         
                         // To reference a class from another package, we use package + className
                         // The class referenced must be Public to be imported.	
-                        com.JavaCertification.Packages.First.Person person;
+                        com.javaCertification.packages.first.Person person;
 
                         // It's not a good practice to use the Fully Qualified Name
-                        public com.JavaCertification.Packages.First.Person getPerson() {
+                        public com.javaCertification.packages.first.Person getPerson() {
                           return person;
                         }
                         
@@ -288,9 +285,9 @@
                       
                     </pre>
                     <pre class="brush: java">
-                      package com.JavaCertification.Packages.First;
+                      package com.javaCertification.packages.first;
 
-                      import com.JavaCertification.Packages.First.Address; // Optional because they are in the same package
+                      import com.javaCertification.packages.first.Address; // Optional because they are in the same package
 
                       public class Person {
                         
@@ -303,7 +300,7 @@
 
                     </pre>
                     <pre class="brush: java">
-                      package com.JavaCertification.Packages.First;
+                      package com.javaCertification.packages.first;
 
                       public class Address {
                         
@@ -315,7 +312,7 @@
 
                     </pre>
                     <pre class="brush: java">
-                      package com.JavaCertification.Packages.Third;
+                      package com.javaCertification.packages.third;
 
                       public class Util {
                         
