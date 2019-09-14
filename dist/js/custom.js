@@ -1,209 +1,195 @@
 $(function() {
+  "use strict";
 
-	"use strict";
+  var wind = $(window);
 
-    var wind = $(window);
+  var main_height = $(".main-height").outerHeight();
 
-    var main_height = $(".main-height").outerHeight();
+  $(".sub-height").outerHeight(main_height);
 
-    $(".sub-height").outerHeight(main_height);
+  // scrollIt
+  $.scrollIt({
+    upKey: 38, // key code to navigate to the next section
+    downKey: 40, // key code to navigate to the previous section
+    easing: "swing", // the easing function for animation
+    scrollTime: 600, // how long (in ms) the animation takes
+    activeClass: "active", // class given to the active nav element
+    onPageChange: null, // function(pageIndex) that is called when page is changed
+    topOffset: -60 // offste (in px) for fixed top navigation
+  });
 
+  // navbar scrolling background
+  wind.on("scroll", function() {
+    var bodyScroll = wind.scrollTop(),
+      navbar = $(".navbar-default");
 
-    // scrollIt
-    $.scrollIt({
-      upKey: 38,                // key code to navigate to the next section
-      downKey: 40,              // key code to navigate to the previous section
-      easing: 'swing',         // the easing function for animation
-      scrollTime: 600,          // how long (in ms) the animation takes
-      activeClass: 'active',    // class given to the active nav element
-      onPageChange: null,       // function(pageIndex) that is called when page is changed
-      topOffset: -60            // offste (in px) for fixed top navigation
-    });
+    if (bodyScroll > 300) {
+      navbar.addClass("nav-scroll");
+    } else {
+      navbar.removeClass("nav-scroll");
+    }
+  });
 
+  // navbar scrolling background
+  wind.on("scroll", function() {
+    var bodyScroll = wind.scrollTop(),
+      navbar = $(".navbar-default"),
+      logo = $(".navbar .logo> img");
 
-    // navbar scrolling background
-    wind.on("scroll",function () {
+    if (bodyScroll > 300) {
+      navbar.addClass("nav-scroll");
+      //logo.attr('src', 'dist/img/logo-dark.png');
+    } else {
+      navbar.removeClass("nav-scroll");
+      //logo.attr('src', 'dist/img/logo-light.png');
+    }
+  });
 
-        var bodyScroll = wind.scrollTop(),
-            navbar = $(".navbar-default");
+  // button scroll to top
+  wind.on("scroll", function() {
+    var bodyScroll = wind.scrollTop(),
+      button_top = $(".button-top");
 
-        if(bodyScroll > 300){
+    if (bodyScroll > 700) {
+      button_top.addClass("button-show");
+    } else {
+      button_top.removeClass("button-show");
+    }
+  });
 
-            navbar.addClass("nav-scroll");
+  // stellar
+  wind.stellar();
 
-        }else{
+  // typejs
+  $(".header .caption h3").typed({
+    strings: [
+      "Systems Analyst",
+      "Web Developer",
+      "Mobile Developer",
+      "Project Manager",
+      "Java Developer",
+      "Javascript Developer",
+      "Node.js Developer",
+      "React Developer",
+      "React Native Developer"
+    ],
+    loop: true,
+    startDelay: 1000,
+    backDelay: 1000,
+    typeSpeed: 30,
+    showCursor: true,
+    cursorChar: "|",
+    autoInsertCss: true
+  });
 
-            navbar.removeClass("nav-scroll");
-        }
-    });
+  // counterUp
+  $(".numbers .counter").countUp({
+    delay: 10,
+    time: 1500
+  });
 
-    // navbar scrolling background
-    wind.on("scroll",function () {
+  // Tabs
+  $(".tabs-icon").on("click", "li", function() {
+    var myID = $(this).attr("id");
 
-        var bodyScroll = wind.scrollTop(),
-            navbar = $(".navbar-default"),
-            logo = $(".navbar .logo> img");
+    $(this)
+      .addClass("active")
+      .siblings()
+      .removeClass("active");
 
-        if(bodyScroll > 300){
+    $(".tabs .item").hide();
 
-            navbar.addClass("nav-scroll");
-            //logo.attr('src', 'dist/img/logo-dark.png');
+    $("#" + myID + "-content").fadeIn();
+  });
 
-        }else{
-
-            navbar.removeClass("nav-scroll");
-            //logo.attr('src', 'dist/img/logo-light.png');
-        }
-    });
-
-
-    // button scroll to top
-    wind.on("scroll",function () {
-
-        var bodyScroll = wind.scrollTop(),
-            button_top = $(".button-top");
-
-        if(bodyScroll > 700){
-
-            button_top.addClass("button-show");
-
-        }else{
-
-            button_top.removeClass("button-show");
-        }
-    });
-
-
-	// stellar
-    wind.stellar();
-
-
-    // typejs
-    $('.header .caption h3').typed({
-        strings: ["Systems Analyst", "Web Developer", "Mobile Developer", "JAVA Developer", "Project Manager"],
-        loop: true,
-        startDelay: 1000,
-        backDelay: 1000,
-        typeSpeed: 30,
-        showCursor: true,
-		cursorChar: '|',
-		autoInsertCss: true
-    });
-
-
-    // counterUp
-    $('.numbers .counter').countUp({
-        delay: 10,
-        time: 1500
-    });
-
-
-    // Tabs
-    $(".tabs-icon").on("click", "li", function(){
-
-        var myID = $(this).attr("id");
-
-        $(this).addClass("active").siblings().removeClass("active");
-
-        $(".tabs .item").hide();
-
-        $("#" + myID + "-content").fadeIn();
-
-    });
-
-
-   	// progress bar
-    wind.on('scroll', function () {
-        $(".skills-progress span").each(function () {
-            var bottom_of_object = 
-            $(this).offset().top + $(this).outerHeight();
-            var bottom_of_window = 
-            $(window).scrollTop() + $(window).height();
-            var myVal = $(this).attr('data-value');
-            if(bottom_of_window > bottom_of_object) {
-                $(this).css({
-                  width : myVal
-                });
-            }
+  // progress bar
+  wind.on("scroll", function() {
+    $(".skills-progress span").each(function() {
+      var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+      var myVal = $(this).attr("data-value");
+      if (bottom_of_window > bottom_of_object) {
+        $(this).css({
+          width: myVal
         });
+      }
     });
+  });
 
+  // owlCarousel
+  $(".clients .owl-carousel").owlCarousel({
+    items: 1,
+    loop: true,
+    mouseDrag: false,
+    autoplay: true,
+    smartSpeed: 500
+  });
 
-    // owlCarousel
-    $('.clients .owl-carousel').owlCarousel({
-        items:1,
-        loop:true,
-        mouseDrag:false,
-        autoplay:true,
-        smartSpeed:500
-    });
-
-
-    // magnificPopup
-    $('.portfolio .link').magnificPopup({
-      delegate: 'a',
-      type: 'image'
-    });
-
+  // magnificPopup
+  $(".portfolio .link").magnificPopup({
+    delegate: "a",
+    type: "image"
+  });
 });
 
-$(window).on("load",function (){
+$(window).on("load", function() {
+  // Preloader
+  $(".loading").fadeOut(500);
 
-    // Preloader
-    $(".loading").fadeOut(500);
+  // isotope
+  $(".gallery").isotope({
+    // options
+    itemSelector: ".items"
+  });
 
-    // isotope
-    $('.gallery').isotope({
-      // options
-      itemSelector: '.items'
-    });
+  var $gallery = $(".gallery").isotope({
+    // options
+  });
 
-    var $gallery = $('.gallery').isotope({
-      // options
-    });
+  // filter items on button click
+  $(".filtering").on("click", "span", function() {
+    var filterValue = $(this).attr("data-filter");
 
-    // filter items on button click
-    $('.filtering').on( 'click', 'span', function() {
+    $gallery.isotope({ filter: filterValue });
+  });
 
-        var filterValue = $(this).attr('data-filter');
+  $(".filtering").on("click", "span", function() {
+    $(this)
+      .addClass("active")
+      .siblings()
+      .removeClass("active");
+  });
 
-        $gallery.isotope({ filter: filterValue });
+  // contact form
+  $("#contact-form").validator();
 
-    });
+  $("#contact-form").on("submit", function(e) {
+    if (!e.isDefaultPrevented()) {
+      var url = "contact.php";
 
-    $('.filtering').on( 'click', 'span', function() {
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: $(this).serialize(),
+        success: function(data) {
+          var messageAlert = "alert-" + data.type;
+          var messageText = data.message;
 
-        $(this).addClass('active').siblings().removeClass('active');
-
-    });
-
-
-    // contact form
-    $('#contact-form').validator();
-
-    $('#contact-form').on('submit', function (e) {
-        if (!e.isDefaultPrevented()) {
-            var url = "contact.php";
-
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $(this).serialize(),
-                success: function (data)
-                {
-                    var messageAlert = 'alert-' + data.type;
-                    var messageText = data.message;
-
-                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    if (messageAlert && messageText) {
-                        $('#contact-form').find('.messages').html(alertBox);
-                        $('#contact-form')[0].reset();
-                    }
-                }
-            });
-            return false;
+          var alertBox =
+            '<div class="alert ' +
+            messageAlert +
+            ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+            messageText +
+            "</div>";
+          if (messageAlert && messageText) {
+            $("#contact-form")
+              .find(".messages")
+              .html(alertBox);
+            $("#contact-form")[0].reset();
+          }
         }
-    });
-
+      });
+      return false;
+    }
+  });
 });
-
