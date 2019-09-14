@@ -69,15 +69,21 @@
 
 		    <!-- Collect the nav links, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="nav-icon-collapse">
+
+				<script>
+					function removeClassNavbar(){
+						$('#nav-icon-collapse').removeClass('in');
+					}
+				</script>
 		      
 			  <!-- links -->
 		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#" data-scroll-nav="0" class="active">Home</a></li>
-		        <li><a href="#" data-scroll-nav="1">About</a></li>
-		        <li><a href="#" data-scroll-nav="2">Resume</a></li>
-						<li><a href="#" data-scroll-nav="3">Knowledge</a></li>
-						<li><a href="#" data-scroll-nav="4">Blog</a></li>
-		        <li><a href="#" data-scroll-nav="5">Contact</a></li>
+		        <li><a onclick="removeClassNavbar()" href="#" data-scroll-nav="0" class="active">Home</a></li>
+		        <li><a onclick="removeClassNavbar()" href="#" data-scroll-nav="1">About</a></li>
+		        <li><a onclick="removeClassNavbar()" href="#" data-scroll-nav="2">Resume</a></li>
+						<li><a onclick="removeClassNavbar()" href="#" data-scroll-nav="3">Knowledge</a></li>
+						<li><a onclick="removeClassNavbar()" href="#" data-scroll-nav="4">Blog</a></li>
+		        <li><a onclick="removeClassNavbar()" href="#" data-scroll-nav="5">Contact</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container -->
