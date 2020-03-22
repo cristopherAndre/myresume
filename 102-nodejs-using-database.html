@@ -352,6 +352,65 @@
                       $ yarn sequelize db:migrate:undo:all
                     </p>
 
+
+
+                    <br />
+                    <hr />
+                    <br />
+
+                    <h5>Seeders</h5>
+                    <p class="mb-10">
+                      Suppose we want to insert some data into a few tables by default.
+
+                      To manage all data migrations you can use seeders. Seed files are some change in data that can be used to populate database table with sample data or test data.
+                      Let's create a seed file which will add an admin user to our User table.
+                    </p>
+
+                    <p class="spacial">
+                      $ yarn sequelize seed:generate --name admin-user
+                    </p>
+
+                    <p>seed file</p>
+                    <pre class="brush: javascript">
+                      const bcrypt = require('bcryptjs');
+                      module.exports = {
+                          up: QueryInterface => {
+                              return QueryInterface.bulkInsert(
+                                  'users',
+                                  [
+                                      {
+                                          name: 'Distribuidora FastFeet',
+                                          email: 'admin@fastfeet.com',
+                                          admin: true,
+                                          password_hash: bcrypt.hashSync('123456', 8),
+                                          created_at: new Date(),
+                                          updated_at: new Date(),
+                                      },
+                                  ],
+                                  {}
+                              );
+                          },
+                          down: () => {},
+                      };
+                    </pre>
+                    <p class="mb-10">
+                      In last step you have create a seed file. It's still not committed to database. To do that we need to run a simple command.
+                    </p>
+                    
+                    <p class="spacial">
+                      $ yarn sequelize db:seed:all
+                    </p>
+                    <p class="mb-10">
+                      We also can run a rollback with these commands:
+                    </p>
+                    <p class="spacial">
+                      $ yarn sequelize db:seed:undo
+                      <br />
+                      $ yarn sequelize db:seed:undo:all
+                      <br />
+                      $ yarn sequelize db:seed:undo --seed name-of-seed-as-in-data
+                    </p>
+
                     <br />
                     <hr />
                     <br />
