@@ -201,7 +201,7 @@ p {
 }
 .navbar-default .navbar-nav > li > a {
   margin: 0 !important;
-  color: #eee !important;
+  color: #777 !important;
   padding: 0 !important;
   position: relative;
 }
@@ -369,6 +369,7 @@ p {
 -------------------------------------------------------- */
 .hero {
   padding-bottom: 60px;
+  padding-top: 150px;
 }
 .hero .hero-content .info {
   margin-top: 50px;
@@ -1214,7 +1215,7 @@ p {
   position: relative;
   padding-bottom: 50px;
   overflow: hidden;
-  background-color: #7159c1;
+  background-color: #907dcf;
 }
 .contact:after {
   content: "";
@@ -1265,8 +1266,8 @@ p {
 }
 .contact .info {
   text-align: center;
-  color: #fff;
-  background: rgba(20, 20, 20, 0.4);
+  color: #fff;  
+  background-color: #7159c1;
   border: 1px solid rgba(250, 250, 250, 0.2);
   padding: 80px 0;
 }
@@ -1276,7 +1277,7 @@ p {
 .contact .info .item .icon {
   font-size: 30px;
   margin-bottom: 20px;
-  color: #7159c1;
+  
 }
 .contact .info .item h6 {
   font-family: "Muli", sans-serif;
