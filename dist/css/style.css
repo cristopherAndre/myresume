@@ -273,11 +273,20 @@ p {
     background-image: url(../img/bg.jpg);
     background-attachment: fixed;
   }
+  .image-space {
+    padding-top: 25%;
+  }
+  .hero {    
+    padding-top: 120px;
+  }
 }
 @media screen and (max-width: 1024px) {
   .header {
     background-image: url(../img/bg-mobile.jpg);
     background-attachment: unset;
+  }
+  .image-space {
+    padding-top: 0%;
   }
 }
 
@@ -369,7 +378,6 @@ p {
 -------------------------------------------------------- */
 .hero {
   padding-bottom: 60px;
-  padding-top: 150px;
 }
 .hero .hero-content .info {
   margin-top: 50px;
